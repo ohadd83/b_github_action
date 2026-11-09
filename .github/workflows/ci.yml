@@ -17,7 +17,9 @@ jobs:
       AWS_REGION: eu-central-1
       ECR_REPOSITORY: python-ecommerce-api
       AWS_ACCOUNT_ID: "257151975682"
-
+      CONTAINER_NAME: ecommerce-api
+      HOST_PORT: "8000"
+      CONTAINER_PORT: "8000" 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -48,4 +50,27 @@ jobs:
         run: |
           docker push \
           $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:${{ github.sha }}
+      - name:Deploy container on EC2
+        run: | 
+          IMAGE_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:${{ github.sha }}
+          echo "pulling image from ECR"
+          docker pull $IMAGE_URI
+
+          echo "stopping old container"
+          docker stop $CONTAINER_NAME || true
+          docker rm $CONTAINER_NAME || true
+
+          echo "starting new container"
+          docker run -d --name $CONTAINER_NAME -p $HOST_PORT:$CONTAINER_PORT --rstart unless-stopped $IMAGE_URI
+
+          echo "deployment completed"
+          docker ps
+
+
+
+
+
+
+
+
 
