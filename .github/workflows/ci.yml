@@ -81,8 +81,8 @@ jobs:
             fi ;
             echo "attempt $i failed. waiting 3 seconds"
           done
-        echo "application failed to start"
-        exit 1
+          echo "application failed to start"
+          exit 1
 
 
 
