@@ -56,6 +56,8 @@ jobs:
           echo "pulling image from ECR"
           docker pull $IMAGE_URI
 
+          docker tag $IMAGE_URI ecom-api:latest
+
           echo "stopping old container"
           docker stop $CONTAINER_NAME || true
           docker rm $CONTAINER_NAME || true
