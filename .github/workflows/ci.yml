@@ -1,5 +1,5 @@
 
-name: Python Ecommerce CI - ECR
+name: Python Ecommerce CI - ECR-num2
 
 on:
   push:
