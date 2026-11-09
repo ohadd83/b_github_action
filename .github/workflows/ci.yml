@@ -63,7 +63,7 @@ jobs:
           docker rm $CONTAINER_NAME || true
 
           echo "starting new container"
-        docker run -d --name $CONTAINER_NAME -p $HOST_PORT:$CONTAINER_PORT --restart unless-stopped ecom-api:latest
+          docker run -d --name $CONTAINER_NAME -p $HOST_PORT:$CONTAINER_PORT --restart unless-stopped ecom-api:latest
 
           echo "deployment completed"
           docker ps
