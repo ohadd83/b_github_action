@@ -68,7 +68,7 @@ jobs:
           echo "deployment completed"
           docker ps
       - name:
-          run sleep 5
+          run: sleep 5
       - name: health check tests on prd
         run: | 
           curl -f http://localhost:8000/health
