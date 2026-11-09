@@ -74,7 +74,8 @@ jobs:
           for i in {1..5}; do
             if curl -f http://localhost:8000/health ; then
               echo "healthcheck passed successfuly"
-            fi
+            fi ;
+          done
 
 
 
