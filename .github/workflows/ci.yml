@@ -67,7 +67,7 @@ jobs:
 
           echo "deployment completed"
           docker ps
-      - name:
+      - name:  wait for app 
           run: sleep 5
       - name: health check tests on prd
         run: | 
