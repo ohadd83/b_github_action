@@ -80,7 +80,7 @@ jobs:
                 fi
             fi ;
             echo "attempt $i failed. waiting 3 seconds"
-            sleep 3
+            sleep 4
           done
           echo "application failed to start"
           exit 1
